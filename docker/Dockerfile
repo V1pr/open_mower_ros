@@ -8,13 +8,18 @@ ENV DEBIAN_FRONTEND=noninteractive
 #   - nginx (remove default site to free up port 80)
 
 # fix the keyring
-RUN rm -f /usr/share/keyrings/ros1-latest-archive-keyring.gpg
-COPY ./docker/assets/ros1.key /usr/share/keyrings/ros1-latest-archive-keyring.gpg
-COPY ./docker/assets/ros1.key /etc/apt/trusted.gpg.d/.gpg
-RUN ls -la /etc/apt/sources.lists.d/
-RUN cat /etc/apt/sources.lists.d/*.repo
-RUN apt-key list
-RUN ls -la /usr/share/keyrings/ros1-latest-archive-keyring.gpg
+RUN rm /etc/apt/sources.list.d/ros1-latest.list \
+  && rm /usr/share/keyrings/ros1-latest-archive-keyring.gpg
+
+RUN apt-get update \
+  && apt-get install -y ca-certificates curl
+
+RUN export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}') ;\
+    curl -L -s -o /tmp/ros-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb" \
+    && apt-get update \
+    && apt-get install /tmp/ros-apt-source.deb \
+    && rm -f /tmp/ros-apt-source.deb
+
 RUN apt-get update && apt-get install --yes \
     git \
     mosquitto python3.8-venv \
