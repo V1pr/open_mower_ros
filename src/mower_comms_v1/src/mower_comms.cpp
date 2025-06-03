@@ -347,6 +347,8 @@ std::string getHallConfigsString(const HallConfig *hall_configs, const size_t si
       case HallMode::OFF: str.append("I"); break;
       case HallMode::LIFT_TILT: str.append("L"); break;
       case HallMode::STOP: str.append("S"); break;
+      case HallMode::RBUMP: str.append("R"); break;
+      case HallMode::LBUMP: str.append("B"); break;
       case HallMode::UNDEFINED: str.append("U"); break;
       default: break;
     }
@@ -690,6 +692,8 @@ void checkAndSendConfig() {
         case 'I': llhl_config.hall_configs[hall_idx] = {HallMode::OFF, low_active}; break;
         case 'L': llhl_config.hall_configs[hall_idx] = {HallMode::LIFT_TILT, low_active}; break;
         case 'S': llhl_config.hall_configs[hall_idx] = {HallMode::STOP, low_active}; break;
+        case 'R': llhl_config.hall_configs[hall_idx] = {HallMode::RBUMP, low_active}; break;
+        case 'B': llhl_config.hall_configs[hall_idx] = {HallMode::LBUMP, low_active}; break;
         case 'U': llhl_config.hall_configs[hall_idx] = {HallMode::UNDEFINED, low_active}; break;
         default: break;
       }
