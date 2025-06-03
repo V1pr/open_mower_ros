@@ -248,7 +248,7 @@ void publishStatus() {
   emergency_pub.publish(emergency_msg);
 
   // detailed emergency messages
-  mower_msgs::EmergencyStatus emergeny_status_msg{};
+  mower_msgs::EmergencyStatus emergency_status_msg{};
   emergency_status_msg.stamp = status_msg.stamp;
   emergency_status_msg.active_emergency = active_low_level_emergency > 0;
   emergency_status_msg.latched_emergency = is_emergency();
