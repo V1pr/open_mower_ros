@@ -7,7 +7,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 #   - mosquitto broker
 #   - nginx (remove default site to free up port 80)
 
-COPY --link ./docker/assets/ros.asc /tmp/ros.asc
+RUN ls -la /
+RUN ls -la /tmp
+COPY ./docker/assets/ros.asc /tmp/ros.asc
 RUN apt-key add /tmp/ros.asc
 RUN apt-get update && apt-get install --yes \
     git \
