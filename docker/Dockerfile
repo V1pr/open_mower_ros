@@ -10,7 +10,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 # fix the keyring
 RUN rm -f /usr/share/keyrings/ros1-latest-archive-keyring.gpg
 COPY ./docker/assets/ros1.key /usr/share/keyrings/ros1-latest-archive-keyring.gpg
-RUN apt-key update
+COPY ./docker/assets/ros1.key /etc/apt/trusted.gpg.d/.gpg
+RUN ls -la /etc/apt/sources.lists.d/
+RUN cat /etc/apt/sources.lists.d/*.repo
 RUN apt-key list
 RUN ls -la /usr/share/keyrings/ros1-latest-archive-keyring.gpg
 RUN apt-get update && apt-get install --yes \
