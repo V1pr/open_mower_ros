@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 #   - git
 #   - mosquitto broker
 #   - nginx (remove default site to free up port 80)
-RUN apt install curl
-RUN /bin/curl --silent --output /tmp/ros.asc https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc
+
+COPY --link ./docker/assets/ros.asc /tmp/ros.asc
 RUN apt-key add /tmp/ros.asc
 RUN apt-get update && apt-get install --yes \
     git \
