@@ -1,0 +1,10 @@
+time stamp
+bool active_emergency
+bool latched_emergency
+bool stop1
+bool stop2
+bool lift1
+bool lift2
+bool rbump
+bool lbump
+float32 rain
