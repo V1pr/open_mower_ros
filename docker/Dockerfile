@@ -8,8 +8,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 #   - nginx (remove default site to free up port 80)
 
 # fix the keyring
+RUN rm -f /usr/share/keyrings/ros1-latest-archive-keyring.gpg
 COPY ./docker/assets/ros1.key /usr/share/keyrings/ros1-latest-archive-keyring.gpg
-
+RUN apt-key update
+RUN apt-key list
+RUN ls -la /usr/share/keyrings/ros1-latest-archive-keyring.gpg
 RUN apt-get update && apt-get install --yes \
     git \
     mosquitto python3.8-venv \
