@@ -7,9 +7,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 #   - mosquitto broker
 #   - nginx (remove default site to free up port 80)
 
-#COPY ./docker/assets/ros.asc /tmp/ros.asc
-#RUN apt-key add /tmp/ros.asc
-RUN apt-get --allow-unauthenticated update && apt-get install --allow-unauthenticated --yes \
+COPY ./docker/assets/ros.asc /usr/share/keyrings/ros-archive-keyring.gpg
+COPY ./docker/assets/ros.asc /etc/apt/trusted.gpg.d/ros-archive-keyring.gpg
+COPY ./docker/assets/ros-repos.key /etc/apt/trusted.gpg.d/ros2-archive-keyring.gpg
+RUN apt-key add /etc/apt/trusted.gpg.d/ros2-archive-keyring.gpg
+RUN apt-get update && apt-get install --yes \
     git \
     mosquitto python3.8-venv \
     nginx && rm -rf /var/www /etc/nginx/sites-enabled/* \
