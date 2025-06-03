@@ -160,7 +160,7 @@ enum class HallMode : unsigned int {
   OFF = 0,
   LIFT_TILT,  // Wheel lifted and wheels tilted functionality
   STOP,       // Stop mower
-  RBUMP,       // Bumper
+  RBUMP,      // Bumper
   LBUMP,      // Bumper
   UNDEFINED   // This is used by foreign side to inform that it doesn't has a configuration for this sensor
 };
