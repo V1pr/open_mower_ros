@@ -14,6 +14,7 @@ add_message_files(
         HighLevelStatus.msg
         Perimeter.msg
         Emergency.msg
+        EmergencyStatus.msg
         Power.msg
         DockingSensor.msg
 )
