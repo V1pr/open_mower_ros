@@ -22,7 +22,6 @@
 #include <mower_logic/PowerConfig.h>
 #include <mower_msgs/ESCStatus.h>
 #include <mower_msgs/Emergency.h>
-#include <mower_msgs/EmergencyStatus.h>
 #include <mower_msgs/Power.h>
 #include <mower_msgs/Status.h>
 #include <sensor_msgs/Joy.h>
@@ -52,7 +51,6 @@
 ros::Publisher status_pub;
 ros::Publisher power_pub;
 ros::Publisher emergency_pub;
-ros::Publisher emergency_status_pub;
 ros::Publisher actual_twist_pub;
 ros::Publisher status_left_esc_pub;
 ros::Publisher status_right_esc_pub;
@@ -245,23 +243,18 @@ void publishStatus() {
   emergency_msg.active_emergency = active_low_level_emergency > 0;
   emergency_msg.latched_emergency = is_emergency();
   emergency_msg.reason = "";
-  emergency_pub.publish(emergency_msg);
-
   // detailed emergency messages
-  mower_msgs::EmergencyStatus emergency_status_msg{};
-  emergency_status_msg.stamp = status_msg.stamp;
-  emergency_status_msg.active_emergency = active_low_level_emergency > 0;
-  emergency_status_msg.latched_emergency = is_emergency();
-  emergency_status_msg.stop1 = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
+  emergency_msg.stop1 = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
   // no separate bit for now
-  emergency_status_msg.stop2 = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
-  emergency_status_msg.lift1 = (last_ll_status.emergency_bitmask & 0b00100000) != 0;
+  emergency_msg.stop2 = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
+  emergency_msg.lift1 = (last_ll_status.emergency_bitmask & 0b00100000) != 0;
   // no separate bit for now
-  emergency_status_msg.lift2 = (last_ll_status.emergency_bitmask & 0b00100000) != 0;
-  emergency_status_msg.rbump = (last_ll_status.emergency_bitmask & 0b00001000) != 0;
-  emergency_status_msg.lbump = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
-  emergency_status_msg.rain = (last_ll_status.status_bitmask & 0b00010000) != 0;
-  emergency_status_pub.publish(emergency_status_msg);
+  emergency_msg.lift2 = (last_ll_status.emergency_bitmask & 0b00100000) != 0;
+  emergency_msg.rbump = (last_ll_status.emergency_bitmask & 0b00001000) != 0;
+  emergency_msg.lbump = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
+  emergency_msg.rain = (last_ll_status.status_bitmask & 0b00010000) != 0;
+ 
+  emergency_pub.publish(emergency_msg);
 
   mower_msgs::Power power_msg{};
   power_msg.stamp = status_msg.stamp;
@@ -780,7 +773,6 @@ int main(int argc, char **argv) {
   right_xesc_interface = new xesc_driver::XescDriver(n, rightParamNh);
 
   emergency_pub = n.advertise<mower_msgs::Emergency>("ll/emergency", 1);
-  emergency_status_pub = n.advertise<mower_msgs::Emergency>("ll/emergency_details", 1);
 
   // Diff drive service
   actual_twist_pub = n.advertise<geometry_msgs::TwistStamped>("ll/diff_drive/measured_twist", 1);
