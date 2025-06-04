@@ -253,7 +253,7 @@ void publishStatus() {
   emergency_msg.rbump = (last_ll_status.emergency_bitmask & 0b00001000) != 0;
   emergency_msg.lbump = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
   emergency_msg.rain = (last_ll_status.status_bitmask & 0b00010000) != 0;
- 
+
   emergency_pub.publish(emergency_msg);
 
   mower_msgs::Power power_msg{};
