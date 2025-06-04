@@ -780,6 +780,7 @@ int main(int argc, char **argv) {
   right_xesc_interface = new xesc_driver::XescDriver(n, rightParamNh);
 
   emergency_pub = n.advertise<mower_msgs::Emergency>("ll/emergency", 1);
+  emergency_status_pub = n.advertise<mower_msgs::Emergency>("ll/emergency_details", 1);
 
   // Diff drive service
   actual_twist_pub = n.advertise<geometry_msgs::TwistStamped>("ll/diff_drive/measured_twist", 1);
