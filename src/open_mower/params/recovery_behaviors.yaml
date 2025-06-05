@@ -1,0 +1,5 @@
+recovery_behaviors:
+  - name: 'moveback_recovery'
+    type: 'moveback_recovery/MoveBackRecovery'
+    step_back_length: 0.3
+    step_back_timeout: 10
