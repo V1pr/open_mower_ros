@@ -248,7 +248,7 @@ void publishStatus() {
   // no separate bit for now
   emergency_msg.stop2 = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
   emergency_msg.lift1 = (last_ll_status.emergency_bitmask & 0b00000100) != 0;
-  // no separate bit for now
+  // no separate bit for now - use the same as lift1
   emergency_msg.lift2 = (last_ll_status.emergency_bitmask & 0b00000100) != 0;
   emergency_msg.rbump = (last_ll_status.emergency_bitmask & 0b00010000) != 0;
   emergency_msg.lbump = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
