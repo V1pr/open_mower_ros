@@ -244,14 +244,14 @@ void publishStatus() {
   emergency_msg.latched_emergency = is_emergency();
   emergency_msg.reason = "";
   // detailed emergency messages
-  emergency_msg.stop1 = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
+  emergency_msg.stop1 = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
   // no separate bit for now
-  emergency_msg.stop2 = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
-  emergency_msg.lift1 = (last_ll_status.emergency_bitmask & 0b00100000) != 0;
+  emergency_msg.stop2 = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
+  emergency_msg.lift1 = (last_ll_status.emergency_bitmask & 0b00000100) != 0;
   // no separate bit for now
-  emergency_msg.lift2 = (last_ll_status.emergency_bitmask & 0b00100000) != 0;
-  emergency_msg.rbump = (last_ll_status.emergency_bitmask & 0b00001000) != 0;
-  emergency_msg.lbump = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
+  emergency_msg.lift2 = (last_ll_status.emergency_bitmask & 0b00000100) != 0;
+  emergency_msg.rbump = (last_ll_status.emergency_bitmask & 0b00010000) != 0;
+  emergency_msg.lbump = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
   emergency_msg.rain = (last_ll_status.status_bitmask & 0b00010000) != 0;
 
   emergency_pub.publish(emergency_msg);
