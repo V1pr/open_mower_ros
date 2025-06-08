@@ -12,7 +12,7 @@
     <!-- ****************************************************************** -->
     <!-- Bumper2 Pointcloude node -->
     <!-- ****************************************************************** -->
-    <node name="bumper2pointcloud" pkg="bumper2pointcloud" type="bumper_pointcloud" output="screen"
+    <node name="bumper2pointcloud" pkg="bumper2pointcloud" type="bumper2pointcloud" output="screen"
           respawn="true" respawn_delay="5">
 
         <!--
