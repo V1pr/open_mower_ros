@@ -1,6 +1,5 @@
 <?xml version="1.1"?>
 <launch>
-    <!-- Standalone example launch file for an ntrip client -->
 
     <!-- Declare arguments with default values -->
     <arg name="pointcloud_radius" default="0.25" />
@@ -11,13 +10,12 @@
     <!-- env name="B2PC_DEBUG" value="$(arg debug)"/ -->
 
     <!-- ****************************************************************** -->
-    <!-- NTRIP Client Node -->
+    <!-- Bumper2 Pointcloude node -->
     <!-- ****************************************************************** -->
     <node name="bumper2pointcloud" pkg="bumper2pointcloud" type="bumper_pointcloud" output="screen"
           respawn="true" respawn_delay="5">
 
         <!--
-        
         // Bumper pointcloud distance to base frame; should be something like the robot radius plus
         // costmap resolution plus an extra to cope with robot inertia. This is a bit tricky parameter: if
         // it's too low, costmap will ignore this pointcloud (the robot footprint runs over the hit obstacle),
