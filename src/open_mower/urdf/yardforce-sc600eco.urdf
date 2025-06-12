@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="open_mower">
-
+  <!-- X points forward, Y to left, Y is up -->
   <link name="base_link">
     <visual>
       <material name="blue"/>
       <geometry>
         <!-- mesh filename="package://hovermower_description/meshes/robot_body.dae" / -->
-		<box size="0.34 0.54 0.20" />
+		<box size="0.54 0.34 0.20" />
       </geometry>
     </visual>
   </link>
@@ -19,7 +19,7 @@
   </joint -->
 
   <joint name="bumper_left_joint" type="fixed">
-    <origin xyz="-0.17 0.54 0.040" rpy="0 0 0" />
+    <origin xyz="0.40 0.17 0.040" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="bumper_left" />
   </joint>
@@ -32,7 +32,7 @@
   </link>
 
   <joint name="bumper_right_joint" type="fixed">
-    <origin xyz="-0.17 0.54 0.040" rpy="0 0 0" />
+    <origin xyz="0.40 -0.17 0.040" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="bumper_right" />
   </joint>
