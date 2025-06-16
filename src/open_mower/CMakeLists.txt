@@ -10,7 +10,6 @@ project(open_mower)
 find_package(catkin REQUIRED COMPONENTS
   mower_msgs
   geometry_msgs
-  localization_data_pub
   robot_state_publisher
 )
 
