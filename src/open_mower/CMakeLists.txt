@@ -9,6 +9,8 @@ project(open_mower)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   mower_msgs
+  geometry_msgs
+  localization_data_pub
   robot_state_publisher
 )
 
