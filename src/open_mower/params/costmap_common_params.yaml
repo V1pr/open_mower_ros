@@ -10,16 +10,6 @@ plugins:
 - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
 - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
 
-obstacle_layer:
-  observation_sources: bumper
-
-  bumper:
-    sensor_frame: base_link
-    data_type: PointCloud2
-    topic: /sensors/bumper_pointcloud
-    marking: true
-    clearing: true # bumper can clear?
-
 #cost_scaling_factor and inflation_radius were now moved to the inflation_layer ns
 inflation_layer:
   enabled:              true
