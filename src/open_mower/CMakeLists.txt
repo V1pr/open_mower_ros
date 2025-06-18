@@ -9,8 +9,6 @@ project(open_mower)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   mower_msgs
-  geometry_msgs
-  robot_state_publisher
 )
 
 ## System dependencies are found with CMake's conventions
