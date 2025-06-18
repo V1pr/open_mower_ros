@@ -1,6 +1,6 @@
 <launch>
     <!-- remap geometry_msgs::PoseWithCovariance from GPS to initalpost -->
-    <remap from="/xbot_driver_gps/pose" to="/initialpose"/>
+    <!-- remap from="/xbot_driver_gps/pose" to="/initialpose"/ -->
 
     <!-- Model and state publisher -->
     <param name="robot_description" textfile="$(find open_mower)/urdf/yardforce-sc600eco.urdf"/>
