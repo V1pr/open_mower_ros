@@ -81,6 +81,8 @@ class MowingBehavior : public Behavior {
   int16_t get_current_path();
 
   int16_t get_current_path_index();
+  
+  bool is_obstacle_ahead();
 
   void handle_action(std::string action) override;
 
