@@ -402,7 +402,7 @@ bool MowingBehavior::execute_mowing_plan() {
             ROS_WARN_STREAM("MowingBehavior: (FIRST POINT) - Attempt "
                             << first_point_trim_counter << " / " << config.max_first_point_trim_attempts
                             << " Trimming first point off the beginning of the mow path.");
-            currentMowingPathIndex+=( first_point_trim_counter * 10 ) + 1;
+            currentMowingPathIndex+=(first_point_trim_counter * 10) + 1;
             first_point_trim_counter++;
             first_point_attempt_counter = 0;  // give it another <config.max_first_point_attempts> attempts
             paused = true;
@@ -533,7 +533,7 @@ bool MowingBehavior::execute_mowing_plan() {
           if (currentMowingPathIndex == 0) currentMowingPathIndex++;
           if (!requested_pause_flag) 
           {
-            if ( is_obstacle_ahead() ) 
+            if (is_obstacle_ahead())
             {
               // we need to skip ahead in the mowing path, to get around the obstacle somehow! thx @ow and @cisora
               currentMowingPathIndex+=20;
