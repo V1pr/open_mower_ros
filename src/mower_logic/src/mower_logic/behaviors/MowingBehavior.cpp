@@ -531,21 +531,18 @@ bool MowingBehavior::execute_mowing_plan() {
 
           // currentMowingPathIndex might be 0 if we never consumed one of the points, we advance at least 1 point
           if (currentMowingPathIndex == 0) currentMowingPathIndex++;
-          if (!requested_pause_flag) 
-          {
-            if (is_obstacle_ahead())
-            {
+          if (!requested_pause_flag) {
+            if (is_obstacle_ahead()) {
               // we need to skip ahead in the mowing path, to get around the obstacle somehow! thx @ow and @cisora
-              currentMowingPathIndex+=20;
-              ROS_INFO_STREAM("MowingBehavior: (MOW) skipped ahead to index due to MBF error " << currentMowingPathIndex);
+              currentMowingPathIndex += 20;
+              ROS_INFO_STREAM("MowingBehavior: (MOW) skipped ahead to index due to MBF error "
+                              << currentMowingPathIndex);
               if (currentMowingPathIndex >= path.path.poses.size() ||
-                  (path.path.poses.size() - currentMowingPathIndex) < 5)  // fully mowed the path ?
-                  {
-                    ROS_INFO_STREAM("MowingBehavior: (MOW) Mow path finished, skipping to next mow path.");
-                    currentMowingPath++;
-                    currentMowingPathIndex = 0;
-                    // continue with next segment
-                  }
+                 (path.path.poses.size() - currentMowingPathIndex) < 5) { // fully mowed the path ?
+                ROS_INFO_STREAM("MowingBehavior: (MOW) Mow path finished, skipping to next mow path.");
+                currentMowingPath++;
+                currentMowingPathIndex = 0;
+                // continue with next segment
               }
             } else {                  
               ROS_INFO_STREAM("MowingBehavior: (MOW) PAUSED due to MBF Error at " << currentMowingPathIndex);
