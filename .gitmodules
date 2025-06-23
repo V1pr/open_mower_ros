@@ -13,3 +13,6 @@
 [submodule "bumper2pointcloud"]
 	path = bumper2pointcloud
 	url = https://github.com/V1pr/bumper2pointcloud.git
+[submodule "src/lib/bumper2pointcloud"]
+	path = src/lib/bumper2pointcloud
+	url = https://github.com/V1pr/bumper2pointcloud.git

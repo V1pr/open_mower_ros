@@ -10,7 +10,7 @@
     <rosparam file="$(find open_mower)/params/ftc_local_planner.yaml" command="load" />
     <rosparam file="$(find open_mower)/params/docking_ftc_local_planner.yaml" command="load" />
     <rosparam file="$(find open_mower)/params/global_planner_params.yaml" command="load" />
-    <!-- rosparam if="$(optenv OM_RECOVERY_ENABLED True)" file="$(find open_mower)/params/recovery_behaviors.yaml" command="load" / -->
+    <rosparam if="$(optenv OM_RECOVERY_ENABLED True)" file="$(find open_mower)/params/recovery_behaviors.yaml" command="load" />
   </node>
 
   <node name="move_base_legacy_relay" pkg="mbf_costmap_nav" type="move_base_legacy_relay.py">
