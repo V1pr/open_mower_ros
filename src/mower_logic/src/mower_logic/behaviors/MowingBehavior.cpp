@@ -538,7 +538,7 @@ bool MowingBehavior::execute_mowing_plan() {
               ROS_INFO_STREAM("MowingBehavior: (MOW) skipped ahead to index due to MBF error "
                               << currentMowingPathIndex);
               if (currentMowingPathIndex >= path.path.poses.size() ||
-                  (path.path.poses.size() - currentMowingPathIndex) < 5) { // fully mowed the path ?
+                  (path.path.poses.size() - currentMowingPathIndex) < 5) {  // fully mowed the path ?
                 ROS_INFO_STREAM("MowingBehavior: (MOW) Mow path finished, skipping to next mow path.");
                 currentMowingPath++;
                 currentMowingPathIndex = 0;
