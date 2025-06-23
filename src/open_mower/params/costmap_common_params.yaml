@@ -1,21 +1,10 @@
 # X forward, Y left
-#footprint: [[-14, 17], [-14, -17], [40, -17], [40, 17]]
-robot_radius: 0.0
+footprint: [[-14, 17], [-14, -17], [40, -17], [40, 17]]
+#robot_radius: 0.0
 
-global_frame: map
-robot_base_frame: base_link
+#global_frame: map
+#robot_base_frame: base_link
 
-plugins:
-- name: static_layer
-  type: costmap_2d::StaticLayer
-- name: obstacle_layer
-  type: costmap_2d::ObstacleLayer
-- name: inflation_layer
-  type: costmap_2d::InflationLayer
-
-static_layer:
-  map_topic: mower_map_service/map
-obstacle_layer:
-  max_obstacle_height: 1.0
-  obstacle_range: 3.0
-  raytrace_range: 4.0
+max_obstacle_height: 1.0
+obstacle_range: 3.0
+raytrace_range: 4.0

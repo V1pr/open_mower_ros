@@ -3,13 +3,10 @@
     <!-- remap from="/xbot_driver_gps/pose" to="/initialpose"/ -->
 
     <!-- Model and state publisher -->
-    <param name="robot_description" textfile="$(find open_mower)/urdf/yardforce-sc600eco.urdf"/>
+    <!-- param name="robot_description" textfile="$(find open_mower)/urdf/yardforce-sc600eco.urdf"/ -->
 
     <!-- node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/ -->
-
-    <node pkg="tf2_ros" type="static_transform_publisher" name="bumper_right_broadcaster" args="0.4 -0.10 0 0 0 0 base_link bumper_right" />
-    <node pkg="tf2_ros" type="static_transform_publisher" name="bumper_left_broadcaster" args="0.4 0.10 0 0 0 0 base_link bumper_left" />
 
     <include file="$(find open_mower)/launch/include/_params.launch"/>
     <include file="$(find open_mower)/launch/include/_comms.launch"/>

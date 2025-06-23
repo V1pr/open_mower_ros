@@ -26,4 +26,7 @@
         <param name="pointcloud_height" value="$(arg pointcloud_height)"/>
         <param name="side_point_angle" value="$(arg side_point_angle)"/>
     </node>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="bumper_right_broadcaster" args="0.4 -0.10 0 0 0 0 base_link bumper_right" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="bumper_left_broadcaster" args="0.4 0.10 0 0 0 0 base_link bumper_left" />
 </launch>
