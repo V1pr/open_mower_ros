@@ -3,5 +3,6 @@ global_costmap:
   publish_frequency: 1.0
   rolling_window: false
   resolution: 0.10
+#  transform_tolerance: 0.5
   inflation_layer:
     inflation_radius: 1.0

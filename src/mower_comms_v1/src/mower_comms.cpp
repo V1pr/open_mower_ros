@@ -240,6 +240,17 @@ void publishStatus() {
   emergency_msg.active_emergency = active_low_level_emergency > 0;
   emergency_msg.latched_emergency = is_emergency();
   emergency_msg.reason = "";
+  // detailed emergency messages
+  emergency_msg.stop1 = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
+  // no separate bit for now
+  emergency_msg.stop2 = (last_ll_status.emergency_bitmask & 0b00000010) != 0;
+  emergency_msg.lift1 = (last_ll_status.emergency_bitmask & 0b00000100) != 0;
+  // no separate bit for now - use the same as lift1
+  emergency_msg.lift2 = (last_ll_status.emergency_bitmask & 0b00000100) != 0;
+  emergency_msg.rbump = (last_ll_status.emergency_bitmask & 0b00010000) != 0;
+  emergency_msg.lbump = (last_ll_status.emergency_bitmask & 0b01000000) != 0;
+  emergency_msg.rain = (last_ll_status.status_bitmask & 0b00010000) != 0;
+
   emergency_pub.publish(emergency_msg);
 
   mower_msgs::Power power_msg{};
@@ -326,6 +337,8 @@ std::string getHallConfigsString(const HallConfig *hall_configs, const size_t si
       case HallMode::OFF: str.append("I"); break;
       case HallMode::LIFT_TILT: str.append("L"); break;
       case HallMode::STOP: str.append("S"); break;
+      case HallMode::RBUMP: str.append("R"); break;
+      case HallMode::LBUMP: str.append("B"); break;
       case HallMode::UNDEFINED: str.append("U"); break;
       default: break;
     }
@@ -669,6 +682,8 @@ void checkAndSendConfig() {
         case 'I': llhl_config.hall_configs[hall_idx] = {HallMode::OFF, low_active}; break;
         case 'L': llhl_config.hall_configs[hall_idx] = {HallMode::LIFT_TILT, low_active}; break;
         case 'S': llhl_config.hall_configs[hall_idx] = {HallMode::STOP, low_active}; break;
+        case 'R': llhl_config.hall_configs[hall_idx] = {HallMode::RBUMP, low_active}; break;
+        case 'B': llhl_config.hall_configs[hall_idx] = {HallMode::LBUMP, low_active}; break;
         case 'U': llhl_config.hall_configs[hall_idx] = {HallMode::UNDEFINED, low_active}; break;
         default: break;
       }

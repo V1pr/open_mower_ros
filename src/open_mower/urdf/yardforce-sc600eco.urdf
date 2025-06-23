@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="open_mower">
+  <!-- X points forward, Y to left, Y is up -->
+  <link name="base_link">
+    <visual>
+	  <origin xyz="0 0 0" rpy="0 0 0" />
+      <material name="blue"/>
+      <geometry>
+        <!-- mesh filename="package://hovermower_description/meshes/robot_body.dae" / -->
+		<!-- box size="0.54 0.34 0.20" /-->
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="base_footprint">
+	<geometry>
+		<!-- mesh filename="package://hovermower_description/meshes/robot_body.dae" / -->
+		<box size="0.54 0.34 0.20" />
+	</geometry>
+  </link>
+
+  <!-- elevates the base link, Z is the wheel radius -->
+  <joint name="base_link_joint" type="fixed">
+    <origin xyz="0 0 0.08" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+
+  <joint name="bumper_left_joint" type="fixed">
+    <origin xyz="0.40 0.17 0.040" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="bumper_left" />
+  </joint>
+  <link name="bumper_left" type="fixed">
+	<visual>
+		<geometry>
+			<cylinder length="0.01" radius="0.01" />
+		</geometry>
+	</visual>
+  </link>
+
+  <joint name="bumper_right_joint" type="fixed">
+    <origin xyz="0.40 -0.17 0.040" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="bumper_right" />
+  </joint>
+  <link name="bumper_right" type="fixed">
+	<visual>
+		<geometry>
+			<cylinder length="0.01" radius="0.01" />
+		</geometry>
+	</visual>
+  </link>
+</robot>

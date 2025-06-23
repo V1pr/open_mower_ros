@@ -70,6 +70,10 @@ struct ll_status {
   // Bit 0: Emergency latch
   // Bit 1: Emergency/Lift (or tilt)
   // Bit 2: Emergency/Stop
+  // Bit 3: N/A
+  // Bit 4: Left bump
+  // But 5: N/A
+  // Bit 6: Right bump
   uint8_t emergency_bitmask;
   // Charge voltage
   float v_charge;
@@ -153,6 +157,8 @@ enum class HallMode : unsigned int {
   OFF = 0,
   LIFT_TILT,  // Wheel lifted and wheels tilted functionality
   STOP,       // Stop mower
+  RBUMP,      // Bumper
+  LBUMP,      // Bumper
   UNDEFINED   // This is used by foreign side to inform that it doesn't has a configuration for this sensor
 };
 
@@ -161,7 +167,7 @@ struct HallConfig {
   HallConfig(HallMode t_mode = HallMode::UNDEFINED, bool t_active_low = false)
       : mode(t_mode), active_low(t_active_low){};
 
-  HallMode mode : 3;  // 1 bit reserved
+  HallMode mode : 5;  // 1 bit reserved
   bool active_low : 1;
 } __attribute__((packed));
 #pragma pack(pop)

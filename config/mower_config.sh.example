@@ -267,6 +267,8 @@ export OM_RAIN_DELAY_MINUTES=30
 # U = Undefined (don't touch this input, leave it as it's by default)
 # S = Stop. This input shall be used as "Stop" button input
 # L = Lift. Use for an input with lift and tilt support like for wheel sensors
+# R = Right bumper sensor (pushbutton)
+# B = Left bumper sensor (pushbutton)
 #
 # In addition, each mode letter, can be prefixed with a "!" character, which indicate that this sensor shall be handled as "low-active" sensor
 #
@@ -281,6 +283,8 @@ export OM_RAIN_DELAY_MINUTES=30
 # which is Hall1+2 to the front wheel-lift sensors, and Hall3+4 to the top cover stop-button halls:
 # export OM_EMERGENCY_INPUT_CONFIG="!L, !L, !S, !S"
 # Yes, "!x" (low-active), because Classic 500 models, pull the input to low when they get triggered (whereas all CoverUI signals are "high-active")
+# On the SA type mowers:
+# export OM_EMERGENCY_INPUT_CONFIG="L, L, S, S"
 #
 #export OM_EMERGENCY_INPUT_CONFIG=""
 #
@@ -306,6 +310,8 @@ export OM_RAIN_DELAY_MINUTES=30
 # export OM_MQTT_PASSWORD=""
 # export OM_MQTT_TOPIC_PREFIX="openmower"
 
+# Bumper2pointcloud node start
+# export OM_B2PC=True
 
 ################################
 ##     Debugging Settings     ##

@@ -10,3 +10,6 @@
 [submodule "services"]
 	path = services
 	url = https://github.com/xtech/definitions-open-mower.git
+[submodule "bumper2pointcloud"]
+	path = bumper2pointcloud
+	url = https://github.com/V1pr/bumper2pointcloud.git

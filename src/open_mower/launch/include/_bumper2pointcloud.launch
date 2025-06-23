@@ -1,0 +1,29 @@
+<?xml version="1.1"?>
+<launch>
+
+    <!-- Declare arguments with default values -->
+    <arg name="pointcloud_radius" default="0.25" />
+    <arg name="pointcloud_height" default="0.04" />
+    <arg name="side_point_angle" default="0.34906585"/>
+
+    <!-- Set the log level to debug -->
+    <!-- env name="B2PC_DEBUG" value="$(arg debug)"/ -->
+
+    <!-- ****************************************************************** -->
+    <!-- Bumper2 Pointcloude node -->
+    <!-- ****************************************************************** -->
+    <node name="bumper2pointcloud" pkg="bumper2pointcloud" type="bumper2pointcloud" output="screen"
+          respawn="true" respawn_delay="5">
+
+        <!--
+        // Bumper pointcloud distance to base frame; should be something like the robot radius plus
+        // costmap resolution plus an extra to cope with robot inertia. This is a bit tricky parameter: if
+        // it's too low, costmap will ignore this pointcloud (the robot footprint runs over the hit obstacle),
+        // but if it's too big, hit obstacles will be mapped too far from the robot and the navigation around
+        // them will probably fail.
+        -->
+        <param name="pointcloud_radius" value="$(arg pointcloud_radius)"/>
+        <param name="pointcloud_height" value="$(arg pointcloud_height)"/>
+        <param name="side_point_angle" value="$(arg side_point_angle)"/>
+    </node>
+</launch>

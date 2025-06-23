@@ -5,5 +5,15 @@ local_costmap:
   width: 1.5
   height: 1.5
   resolution: 0.15
+  static_map: false
   inflation_layer:
     inflation_radius: 0.0
+
+obstacle_layer:
+  observation_sources: bumper
+
+  bumper:
+    data_type: PointCloud2
+    topic: /sensors/bumper_pointcloud
+    marking: true
+    clearing: true # bumper can clear?
