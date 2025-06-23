@@ -535,6 +535,7 @@ bool MowingBehavior::execute_mowing_plan() {
           {
             if ( is_obstacle_ahead() ) 
             {
+              // we need to skip ahead in the mowing path, to get around the obstacle somehow! thx @ow and @cisora
               currentMowingPathIndex+=20;
               ROS_INFO_STREAM("MowingBehavior: (MOW) skipped ahead to index due to MBF error " << currentMowingPathIndex);
               if (currentMowingPathIndex >= path.path.poses.size() ||
