@@ -19,6 +19,7 @@
 
 #include <atomic>
 #include <memory>
+#include <mower_msgs/Emergency.h>
 
 #include "../StateSubscriber.h"
 #include "mower_logic/MowerLogicConfig.h"
