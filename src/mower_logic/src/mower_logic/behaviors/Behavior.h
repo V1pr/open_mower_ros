@@ -24,6 +24,8 @@
 #include "mower_msgs/HighLevelStatus.h"
 #include "ros/ros.h"
 
+#include "../StateSubscriber.h"
+
 enum eAutoMode { MANUAL = 0, SEMIAUTO = 1, AUTO = 2 };
 
 enum pauseType { PAUSE_MANUAL = 0b1, PAUSE_EMERGENCY = 0b10 };
