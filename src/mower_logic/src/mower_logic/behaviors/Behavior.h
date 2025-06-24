@@ -16,10 +16,10 @@
 #define SRC_BEHAVIOR_H
 
 #include <actionlib/client/simple_action_client.h>
+#include <mower_msgs/Emergency.h>
 
 #include <atomic>
 #include <memory>
-#include <mower_msgs/Emergency.h>
 
 #include "../StateSubscriber.h"
 #include "mower_logic/MowerLogicConfig.h"
