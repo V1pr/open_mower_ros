@@ -33,6 +33,8 @@ struct sSharedState {
   bool active_semiautomatic_task;
   // True, if the user has manually paused the mowing. We should then wait for the user to continue
   bool semiautomatic_task_paused;
+  // current emergency values - needed for obstacle detection
+  StateSubscriber<mower_msgs::Emergency>* emergency_state_subscriber;
 };
 
 /**

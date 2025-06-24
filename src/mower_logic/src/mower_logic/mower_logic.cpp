@@ -890,6 +890,7 @@ int main(int argc, char **argv) {
   auto shared_state = std::make_shared<sSharedState>();
   shared_state->active_semiautomatic_task = false;
   shared_state->semiautomatic_task_paused = false;
+  shared_state->emergency_state_subscriber = &emergency_state_subscriber;
 
   // Behavior execution loop
   while (ros::ok()) {

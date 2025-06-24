@@ -38,7 +38,6 @@ extern mower_logic::MowerLogicConfig getConfig();
 extern void setConfig(mower_logic::MowerLogicConfig);
 
 extern void registerActions(std::string prefix, const std::vector<xbot_msgs::ActionInfo> &actions);
-extern emergency_state_subscriber;
 
 MowingBehavior MowingBehavior::INSTANCE;
 
@@ -620,7 +619,7 @@ int16_t MowingBehavior::get_current_path_index() {
 }
 
 bool MowingBehavior::is_obstacle_ahead() {
-  auto last_emergency_msg = emergency_state_subscriber.getMessage();
+  auto last_emergency_msg = shared_state->emergency_state_subscriber->getMessage();
   // obstacle is ahead
   if (last_emergency_msg.lbump || last_emergency_msg.rbump) {
     return true;
