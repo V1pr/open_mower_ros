@@ -38,7 +38,7 @@ extern mower_logic::MowerLogicConfig getConfig();
 extern void setConfig(mower_logic::MowerLogicConfig);
 
 extern void registerActions(std::string prefix, const std::vector<xbot_msgs::ActionInfo> &actions);
-extern StateSubscriber<mower_msgs::Emergency> emergency_state_subscriber{"/ll/emergency"};
+extern emergency_state_subscriber;
 
 MowingBehavior MowingBehavior::INSTANCE;
 
