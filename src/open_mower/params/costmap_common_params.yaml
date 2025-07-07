@@ -1,5 +1,5 @@
 # X forward, Y left
-footprint: [[-14, 17], [-14, -17], [40, -17], [40, 17]]
+footprint: [[-0.14, 0.17], [-0.14, -0.17], [0.40, -0.17], [0.40, 0.17]]
 #robot_radius: 0.0
 
 #global_frame: map
