@@ -1,15 +1,18 @@
 recovery_behaviors:
   - name: 'conservative_reset'
     type: 'clear_costmap_recovery/ClearCostmapRecovery'
-  - name: 'rotate_recovery'
-    type: 'rotate_recovery/RotateRecovery'
   - name: 'ftc_backward_forward'
     type: 'ftc_local_planner/BackwardForwardRecovery'
   - name: 'moveback_recovery'
     type: 'moveback_recovery/MoveBackRecovery'
     step_back_length: 0.1
     step_back_timeout: 10
+  #  - name: 'rotate_recovery'
+  #   type: 'rotate_recovery/RotateRecovery'
   #- name: 'aggressive_reset'
   #  type: 'clear_costmap_recovery/ClearCostmapRecovery'
   #- name: 'super_reset'
   #  type: 'clear_costmap_recovery/ClearCostmapRecovery'
+
+recovery_enabled: true
+recovery_patience: 10.0

@@ -137,6 +137,14 @@ xbot_msgs::AbsolutePose getPose() {
 
 void setEmergencyMode(bool emergency);
 
+bool isDocked() {
+    if ( getPower().v_charge > 5.0 ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 void registerActions(std::string prefix, const std::vector<xbot_msgs::ActionInfo> &actions) {
   xbot_msgs::RegisterActionsSrv srv;
   srv.request.node_prefix = prefix;
